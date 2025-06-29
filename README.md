@@ -14,7 +14,29 @@ The system supports three user roles with distinct access levels and functionali
 - **IDE**: Visual Studio 2022
 
 ## User Roles & Features  
-### Clients
+**Clients:**  
+-View Bill  
+-View Call History  
+-Pay Bill  
+-View Programs  
+-Wheel of Fortune  
+**Admins:**  
+-Create New Seller  
+-Edit Seller  
+-Delete Seller  
+-Create New Program  
+-Change Program Features  
+**Sellers:**  
+-Create Client  
+-Edit Client  
+-Delete Client  
+-Issuing Bill  
+Change Client's Program  
+
+## Contact:  
+**Email:** mirsini.kafetsi@gmail.com  
+**LinkedIn:** linkedin.com/in/myrsini-kafetsi
+
 
 
 
