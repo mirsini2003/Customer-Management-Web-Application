@@ -1,0 +1,173 @@
+﻿@{
+    ViewData["Title"] = "Create Seller";
+    Layout = null; 
+}
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            background-image: url('/images/background1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: beige;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #389A3C;
+            }
+
+        .btn-secondary {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            text-align: center;
+        }
+
+            .btn-secondary:hover {
+                background-color: #389A3C;
+            }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .bottom-right {
+            position: absolute;
+            bottom: 4px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px;
+            border-radius: 5px;
+        }
+
+        .top-left {
+            position: absolute;
+            top: 10px; 
+            left: 10px; 
+            width: 35px; 
+        }
+    </style>
+</head>
+<body>
+    <a href="/OnlineHelpAdmin.html">
+        <img src="/images/lightbulb.png" alt="LOGO" class="top-left">
+    </a>
+    <div class="container">
+        <h1>Create Seller</h1>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <p class="success-message">@TempData["SuccessMessage"]</p>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <p class="error-message">@TempData["ErrorMessage"]</p>
+        }
+
+        <form action="/Home/CreationSeller" method="post">
+            <label for="firstName">Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="e.g. Nick" required />
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="e.g. Papadopoulos" required />
+
+
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="e.g. nick123" required />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="e.g. npap1998" required />
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="e.g. npap1998" required />
+
+            <button type="submit" class="btn">Create Seller</button>
+            <br>
+            <a asp-controller="Home" asp-action="Index1" class="btn btn-secondary">Menu</a>
+        </form>
+    </div>
+    <div class="bottom-right">
+        <strong>Contact:</strong> <br>
+        Phone: 210-1234567 <br>
+        Email: <a href="mailto:unipi@gmail.com">unipi@gmail.com</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "Edit Seller";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('/images/background1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        
+        }
+
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+            .form-group label {
+                display: block;
+                font-weight: bold;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 8px;
+                margin-top: 5px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+        .btn {
+            padding: 10px 20px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+            .btn:hover {
+                background-color: #389A3C;
+            }
+
+        .bottom-right {
+            position: absolute;
+            bottom: 4px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px;
+            border-radius: 5px;
+        }
+
+        .top-left {
+            position: absolute;
+            top: 10px; 
+            left: 10px; 
+            width: 35px; 
+        }
+    </style>
+</head>
+<body>
+    <a href="/OnlineHelpAdmin.html">
+        <img src="/images/lightbulb.png" alt="LOGO" class="top-left">
+    </a>
+    <div class="container">
+        <h1>Edit Seller</h1>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <p class="success">@TempData["SuccessMessage"]</p>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <p class="error">@TempData["ErrorMessage"]</p>
+        }
+        <form method="post" action="/Home/EditSeller">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Insert First Name" />
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Insert Last Name" />
+            </div>
+            <div class="form-group">
+                <label for="oldUsername">Old Username</label>
+                <input type="text" id="oldUsername" name="oldUsername" placeholder="Insert Old Username" />
+            </div>
+            <div class="form-group">
+                <label for="newUsername">New Username</label>
+                <input type="text" id="newUsername" name="newUsername" placeholder="Insert New Username" />
+            </div>
+            <button type="submit" class="btn">Save</button>
+            <br> <br>
+            <a asp-controller="Home" asp-action="Index1" class="btn btn-secondary">Menu</a>
+        </form>
+    </div>
+    <div class="bottom-right">
+        <strong>Contact:</strong> <br>
+        Phone: 210-1234567 <br>
+        Email: <a href="mailto:unipi@gmail.com">unipi@gmail.com</a>
+    </div>
+</body>
+</html>

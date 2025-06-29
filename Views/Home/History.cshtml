@@ -1,0 +1,152 @@
+﻿@model List<ergasia_mvc.Controllers.HomeController.CallsViewModel>
+
+@{
+    ViewData["Title"] = "View Call History";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            background-image: url('/images/background1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: beige;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            color: white;
+            background-color: #4CAF50;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #389A3C;
+            }
+
+        .bottom-right {
+            position: absolute;
+            bottom: 4px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px;
+            border-radius: 5px;
+        }
+
+        .top-left {
+            position: absolute;
+            top: 10px; 
+            left: 10px; 
+            width: 35px; 
+        }
+    </style>
+</head>
+<body>
+    <a href="/OnlineHelpClient.html" ">
+        <img src="/images/lightbulb.png" alt="LOGO" class="top-left">
+    </a>
+    
+    <div class="container">
+        <h1>View Call History</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Call Number</th>
+                    <th>Duration (minutes)</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var call in Model)
+                    {
+                        <tr>
+                            <td>@call.Day.ToString("dd/MM/yyyy")</td>
+                            <td>@call.Time</td>
+                            <td>@call.Number</td>
+                            <td>@call.Duration</td>
+                            
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" style="text-align: center;">No calls found.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a asp-controller="Home" asp-action="Index1" class="btn btn-primary">Menu</a>
+    </div>
+    <div class="bottom-right">
+        <strong>Contact:</strong> <br>
+        Phone: 210-1234567 <br>
+        Email: <a href="mailto:unipi@gmail.com">unipi@gmail.com</a>
+    </div>
+</body>
+</html>

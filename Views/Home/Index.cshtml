@@ -1,0 +1,172 @@
+﻿@{
+    ViewData["Title"] = "User Log In";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        background-image: url('/images/background_mvc.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: beige;
+    }
+
+    .header {
+        text-align: center;
+        padding: 20px;
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+    }
+ 
+    .content {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 100px; 
+    }
+
+    .login-container {
+        background-color: #ffffff;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #333333;
+        margin-bottom: 20px;
+    }
+
+    .error-message {
+        color: red;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        text-align: left;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555555;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    }
+    #okButton{
+        background-color: red;
+    }
+    button:hover {
+        background-color: #389A3C;
+    }
+
+   
+
+    .bottom-right {
+        position: absolute;
+        bottom: 4px;
+        right: 8px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 4px;
+        border-radius: 5px;
+    }
+
+    .top-left {
+        position: absolute;
+        top: 65px; 
+        left: 10px; 
+        width: 35px; 
+    }
+</style>
+<div class="header">
+    <h1>Welcome to the Mobile Telephony Company</h1>
+</div>
+
+
+
+<div class="content">
+    <div class="login-container">
+        <h2>Login</h2>
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div id="errorModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModal">&times;</span>
+                    <p>@TempData["ErrorMessage"]</p>
+                    <button id="okButton">OK</button>
+                </div>
+            </div>
+        }
+        
+        
+        <form asp-controller="Account" asp-action="LogIn" method="post">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required />
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+             <button type="submit">Login</button>
+            
+
+        </form>
+    </div>
+</div>
+<div class="bottom-right">
+    <strong>Contact:</strong> <br>
+    Phone: 210-1234567 <br>
+    Email: <a href="mailto:unipi@gmail.com">unipi@gmail.com</a>
+</div>
+<script>
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <text>
+                document.getElementById('errorModal').style.display = 'block';
+        </text>
+    }
+
+   
+    document.getElementById('okButton').addEventListener('click', function () {
+        document.getElementById('errorModal').style.display = 'none';
+        
+        window.location.href = '@Url.Action("Index", "Home")';
+    });
+       
+    document.getElementById('closeModal').addEventListener('click', function () {
+        document.getElementById('errorModal').style.display = 'none';
+        window.location.href = '@Url.Action("Index", "Home")';
+    });
+</script>

@@ -1,0 +1,155 @@
+﻿@model List<ergasia_mvc.Controllers.HomeController.UserBillViewModel>
+
+@{
+    ViewData["Title"] = "Issuing Client's Bill";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f9f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('/images/background1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: beige;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d572c;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: #389A3C;
+            }
+
+        .bottom-right {
+            position: absolute;
+            bottom: 4px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px;
+            border-radius: 5px;
+        }
+
+        .top-left {
+            position: absolute;
+            top: 10px; 
+            left: 10px; 
+            width: 35px; 
+        }
+    </style>
+</head>
+<body>
+    <a href="/OnlineHelpSeller.html">
+        <img src="/images/lightbulb.png" alt="LOGO" class="top-left">
+    </a>
+    <div class="container">
+        <h1>Issuing Client's Bill</h1>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Program</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Username</td>
+                            <td>@user.Program</td>
+                            <td>
+                                <form action="/Home/GenerateBill" method="post">
+                                    <input type="hidden" name="username" value="@user.Username" />
+                                    <input type="hidden" name="program" value="@user.Program" />
+                                    <button type="submit" class="btn">Issuing Bill</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3">There are no users.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br> <br>
+        <a asp-controller="Home" asp-action="Index1" class="btn">Menu</a>
+    </div>
+    <div class="bottom-right">
+        <strong>Contact:</strong> <br>
+        Phone: 210-1234567 <br>
+        Email: <a href="mailto:unipi@gmail.com">unipi@gmail.com</a>
+    </div>
+</body>
+</html>

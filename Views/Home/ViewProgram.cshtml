@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "View Programs";
+    Layout = null;
+    var plans = new List<dynamic>
+    {
+        new { Name = "4", TalkTime = 450, SmsCount = 220, DataGB = 10 },
+        new { Name = "General", TalkTime = 2000, SmsCount = 300, DataGB = 10 },
+        new { Name = "Offer", TalkTime = 2000, SmsCount = 3000, DataGB = 500 },
+        new { Name = "Student", TalkTime = 1000, SmsCount = 100, DataGB = 4 }
+
+    };
+}
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('/images/background1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: beige;
+        }
+
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .plan {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #fff;
+            width: 200px;
+            text-align: center;
+        }
+
+            .plan h3 {
+                margin: 0;
+                color: #333;
+            }
+
+            .plan p {
+                margin: 5px 0;
+                color: #555;
+            }
+
+        .select-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+            .select-button:hover {
+                background-color: #45a049;
+            }
+
+        .bottom-right {
+            position: absolute;
+            bottom: 4px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            color: white;
+            background-color: #4CAF50;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #389A3C;
+            }
+
+        .top-left {
+            position: absolute;
+            top: 10px; 
+            left: 10px; 
+            width: 35px; 
+        }
+    </style>
+</head>
+<body>
+    <a href="/OnlineHelpClient.html">
+        <img src="/images/lightbulb.png" alt="LOGO" class="top-left">
+    </a>
+    <div class="container">
+        <h1>Available Programs</h1>
+        <div class="plans-container">
+            @foreach (var plan in plans)
+            {
+                <div class="plan">
+                    <h3>@plan.Name</h3>
+                    <p>Minutes: @plan.TalkTime minutes</p>
+                    <p>SMS: @plan.SmsCount</p>
+                    <p>Internet: @plan.DataGB GB</p>
+                </div>
+            }
+        </div>
+        <a asp-controller="Home" asp-action="Index1" class="btn btn-secondary">Menu</a>
+    </div>
+    <div class="bottom-right">
+        <strong>Contact:</strong> <br>
+        Phone: 210-1234567 <br>
+        Email: <a href="mailto:unipi@gmail.com">unipi@gmail.com</a>
+    </div>
+</body>
+</html>
