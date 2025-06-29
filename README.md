@@ -14,6 +14,7 @@ The system supports three user roles with distinct access levels and functionali
 - **IDE**: Visual Studio 2022
 
 ## User Roles & Features  
-### hgsvc
+### Clients
+
 
 
