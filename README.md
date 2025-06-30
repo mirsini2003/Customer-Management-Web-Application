@@ -7,7 +7,7 @@ The system supports three user roles with distinct access levels and functionali
 -Administrators  
 
 ## Tech Stack  
-- **Language**: C#
+- **Backend**: C#
 - **Framework**: ASP.NET Core MVC
 - **Frontend**: HTML, CSS, JavaScript
 - **Database**: SQL Server
